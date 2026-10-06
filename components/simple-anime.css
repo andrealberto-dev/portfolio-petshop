@@ -1,0 +1,35 @@
+/*
+ * simple-anime.css
+ * Estados iniciais e final das animações de entrada (SimpleAnime)
+ * As regras ficam presas a [data-anime] para sumirem após a animação.
+ */
+
+/* Estado inicial: invisível */
+[data-anime] {
+  opacity: 0;
+}
+
+/* Direções de entrada */
+[data-anime].fadeInUp       { transform: translate3d(0, 40px, 0); }
+[data-anime].fadeInDown     { transform: translate3d(0, -24px, 0); }
+[data-anime].fadeInLeft     { transform: translate3d(-48px, 0, 0); }
+[data-anime].fadeInRight    { transform: translate3d(48px, 0, 0); }
+[data-anime].fadeInScale    { transform: scale(0.92); }
+[data-anime].fadeInSlightUp { transform: translate3d(0, 14px, 0); }
+
+/* Estado final: visível e na posição original */
+[data-anime].anime {
+  opacity: 1;
+  transform: none;
+  transition:
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 800ms ease;
+}
+
+/* Movimento reduzido: sem deslocamento */
+@media (prefers-reduced-motion: reduce) {
+  [data-anime] {
+    opacity: 1;
+    transform: none !important;
+  }
+}

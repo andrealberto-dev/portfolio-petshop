@@ -1,0 +1,411 @@
+/*
+ * components.css
+ * Componentes reutilizáveis: logotipo, cabeçalho, navegação, rótulos,
+ * personalização dos botões (origin/flow), selo giratório e WhatsApp flutuante.
+ */
+
+/* ════════════════════════════════════════════════════════
+   Logotipo tipográfico
+   ════════════════════════════════════════════════════════ */
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15em;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-primary-dark);
+}
+
+/* "&" em itálico laranja — assinatura da marca */
+.logo__amp {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-accent-dark);
+}
+
+/* "Cia" com patinha no lugar do pingo */
+.logo__cia {
+  position: relative;
+}
+
+.logo__paw {
+  position: absolute;
+  top: -0.42em;
+  right: -0.5em;
+  width: 0.5em;
+  height: 0.5em;
+  color: var(--color-secondary);
+}
+
+/* "pet shop · bh" em versalete pequeno */
+.logo__tag {
+  margin-left: 0.6em;
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Variante clara para fundos escuros */
+.logo--light {
+  color: var(--color-cream);
+}
+
+.logo--light .logo__tag {
+  color: var(--color-secondary);
+}
+
+/* ════════════════════════════════════════════════════════
+   Cabeçalho
+   ════════════════════════════════════════════════════════ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  padding-block: var(--space-sm);
+  transition: background-color 400ms var(--ease-out), padding 400ms var(--ease-out);
+}
+
+/* Estado após scroll: fundo translúcido */
+.site-header.is-scrolled {
+  padding-block: 0.6rem;
+  background: rgba(251, 247, 240, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+/* Botão hambúrguer (mobile) */
+.nav-toggle {
+  position: relative;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.nav-toggle__bar,
+.nav-toggle__bar::before {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--color-cream);
+  transition: transform 300ms var(--ease-out);
+}
+
+.nav-toggle__bar::before {
+  content: '';
+  transform: translateY(6px);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar {
+  transform: rotate(45deg) translate(2px, 2px);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar::before {
+  transform: rotate(-90deg);
+}
+
+/* Menu: painel em tela cheia no mobile */
+.site-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--gutter);
+  background: var(--color-primary-deep);
+  clip-path: circle(0% at calc(100% - 42px) 38px);
+  visibility: hidden;
+  transition: clip-path 600ms var(--ease-out), visibility 0s 600ms;
+}
+
+.site-nav.is-open {
+  clip-path: circle(150% at calc(100% - 42px) 38px);
+  visibility: visible;
+  transition: clip-path 600ms var(--ease-out);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.site-nav__link {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  color: var(--color-cream);
+}
+
+.site-nav__link span {
+  margin-right: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--color-secondary);
+  vertical-align: middle;
+}
+
+.site-nav__cta {
+  display: none;
+}
+
+/* Desktop: menu inline */
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: 0;
+    background: none;
+    clip-path: none;
+    visibility: visible;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+
+  .site-nav__link {
+    position: relative;
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .site-nav__link span {
+    display: none;
+  }
+
+  /* Sublinhado que cresce da esquerda */
+  .site-nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1.5px;
+    background: var(--color-accent-dark);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 400ms var(--ease-out);
+  }
+
+  .site-nav__link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .site-nav__cta {
+    display: inline-flex;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   Rótulo de seção (eyebrow)
+   ════════════════════════════════════════════════════════ */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.eyebrow--light {
+  color: var(--color-secondary);
+}
+
+/* ════════════════════════════════════════════════════════
+   Personalização dos botões (sobre origin-button.css)
+   ════════════════════════════════════════════════════════ */
+
+/* Origin primário na paleta da marca: verde → ripple laranja */
+.origin-btn-primary {
+  --ob-fill-color:   var(--color-accent);
+  --ob-text-on-fill: var(--color-primary-deep);
+  --ob-radius:       999px;
+  background: var(--color-primary);
+  color: var(--color-cream);
+  border: none;
+  height: 54px;
+  padding: 0 30px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Variante compacta (cabeçalho) */
+.origin-btn--sm {
+  height: 42px;
+  padding: 0 20px;
+  font-size: var(--fs-sm);
+}
+
+/* Variante clara para usar sobre fundo colorido */
+.origin-btn--on-color {
+  --ob-fill-color:   var(--color-primary-deep);
+  --ob-text-on-fill: var(--color-cream);
+  background: var(--color-cream);
+  color: var(--color-primary-deep);
+}
+
+/* Flow padrão na paleta da marca */
+.flow-btn {
+  --flow-bg:         var(--color-primary);
+  --flow-text:       var(--color-primary);
+  --flow-text-hover: var(--color-cream);
+  border-color: rgba(45, 106, 79, 0.4);
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+/* Flow branco usado em fundos escuros: texto verde no hover */
+.flow-btn-white {
+  --flow-bg:         var(--color-cream);
+  --flow-text:       var(--color-cream);
+  --flow-text-hover: var(--color-primary-deep);
+  border-color: rgba(251, 247, 240, 0.4);
+}
+
+/* Ícone SVG dentro de botões origin */
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════════
+   Selo giratório com texto circular
+   ════════════════════════════════════════════════════════ */
+.stamp {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-primary-deep);
+}
+
+.stamp__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 18s linear infinite;
+}
+
+.stamp__ring text {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  fill: currentColor;
+}
+
+.stamp__icon {
+  width: 38px;
+  height: 38px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   WhatsApp flutuante
+   ════════════════════════════════════════════════════════ */
+/* Wrapper fixo (o botão tem overflow:hidden, então o pulso fica aqui) */
+.whatsapp-float {
+  position: fixed;
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  z-index: 90;
+  width: 60px;
+  height: 60px;
+}
+
+.whatsapp-float__btn {
+  --ob-radius: 50%;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-shadow: 0 14px 30px -10px rgba(18, 140, 126, 0.7);
+}
+
+.whatsapp-float .btn-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Pulso suave chamando atenção */
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-whatsapp);
+  animation: pulse 2.4s var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .whatsapp-float {
+    right: var(--space-lg);
+    bottom: var(--space-lg);
+  }
+}
+
+/* Trava o scroll do body com o menu mobile aberto */
+body.nav-open {
+  overflow: hidden;
+}

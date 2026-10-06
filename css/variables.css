@@ -1,0 +1,62 @@
+/*
+ * variables.css
+ * Tokens de design do Patinhas & Cia: cores, tipografia, espaçamentos e raios.
+ * Todo valor visual reutilizável do site vem daqui.
+ */
+
+:root {
+  /* ── Cores da marca ── */
+  --color-primary:        #2d6a4f;
+  --color-primary-dark:   #1b4332;
+  --color-primary-deep:   #10291f;
+  --color-secondary:      #74c69d;
+  --color-secondary-soft: #d8f3dc;
+  --color-accent:         #f4a261;
+  --color-accent-dark:    #e07a3a;
+
+  /* ── Neutros ── */
+  --color-cream:   #fbf7f0;
+  --color-paper:   #f3ece0;
+  --color-ink:     #14201a;
+  --color-muted:   #5b6b62;
+  --color-line:    rgba(20, 32, 26, 0.14);
+  --color-white:   #ffffff;
+  --color-whatsapp:      #25d366;
+  --color-whatsapp-dark: #128c7e;
+
+  /* ── Tipografia ── */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-md:   1.125rem;
+  --fs-lg:   1.375rem;
+  --fs-xl:   clamp(1.75rem, 4vw, 2.5rem);
+  --fs-2xl:  clamp(2.25rem, 6vw, 4rem);
+  --fs-hero: clamp(2.75rem, 9vw, 6.5rem);
+  --fs-giant: clamp(4.5rem, 16vw, 11rem);
+
+  /* ── Espaçamentos ── */
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+  --space-2xl: clamp(5rem, 12vw, 9rem);
+
+  --gutter:    clamp(1rem, 5vw, 3rem);
+  --max-width: 1240px;
+
+  /* ── Raios e sombras ── */
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   28px;
+  --radius-arch: 999px 999px 24px 24px;
+  --shadow-soft: 0 24px 60px -24px rgba(16, 41, 31, 0.35);
+
+  /* ── Movimento ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

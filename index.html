@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<!--
+  index.html
+  Página única do Patinhas & Cia Pet Shop (Belo Horizonte, MG).
+  Seções: hero → serviços (accordion) → dia de spa → galeria → sobre (números) → contato.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Patinhas &amp; Cia Pet Shop — Pet Shop em Belo Horizonte, MG</title>
+  <meta name="description" content="Pet shop completo com banho e tosa, venda de rações e acessórios, e consultas veterinárias. Atendimento carinhoso e personalizado para cães e gatos em Belo Horizonte.">
+  <meta name="keywords" content="pet shop, Patinhas & Cia Pet Shop, banho e tosa, veterinário, rações, Belo Horizonte">
+  <meta property="og:title" content="Patinhas &amp; Cia Pet Shop — Pet Shop em Belo Horizonte, MG">
+  <meta property="og:description" content="Banho e tosa, rações, acessórios e consultas veterinárias para cães e gatos em BH.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=1200&q=80">
+  <meta name="theme-color" content="#2d6a4f">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <!-- Animações e botões (antes dos estilos do projeto, que os personalizam) -->
+  <link rel="stylesheet" href="components/simple-anime.css">
+  <link rel="stylesheet" href="components/origin-button.css">
+
+  <!-- Estilos: variáveis → global → componentes → página -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <!-- Sprite de ícones reutilizáveis -->
+  <svg class="sr-only" aria-hidden="true" focusable="false">
+    <symbol id="icon-paw" viewBox="0 0 24 24">
+      <ellipse cx="6" cy="9" rx="2.2" ry="3" fill="currentColor"/>
+      <ellipse cx="10.5" cy="5.5" rx="2.2" ry="3" fill="currentColor"/>
+      <ellipse cx="15.5" cy="5.5" rx="2.2" ry="3" fill="currentColor"/>
+      <ellipse cx="20" cy="9" rx="2.2" ry="3" fill="currentColor"/>
+      <path d="M13 11c-3.5 0-7 4.6-7 7.5 0 2 1.6 3 3.3 3 1.6 0 2.4-.9 3.7-.9s2.1.9 3.7.9c1.7 0 3.3-1 3.3-3 0-2.9-3.5-7.5-7-7.5z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.43 9.43 0 0 1-1.45-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.9.99 6.68 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.21-4.24 9.43-9.45 9.43zm8.04-17.47A11.3 11.3 0 0 0 12.04.7C5.77.7.67 5.8.67 12.06c0 2 .52 3.96 1.52 5.68L.57 23.7l6.1-1.6a11.33 11.33 0 0 0 5.37 1.37h.01c6.26 0 11.36-5.1 11.37-11.37 0-3.04-1.18-5.89-3.34-8.04z"/>
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ═══════════ Cabeçalho ═══════════ -->
+  <header class="site-header" id="topo">
+    <div class="container site-header__inner">
+      <!-- Logotipo tipográfico -->
+      <a class="logo fadeInDown" data-anime="0" href="#inicio" aria-label="Patinhas & Cia Pet Shop — início">
+        <span>Patinhas</span>
+        <span class="logo__amp">&amp;</span>
+        <span class="logo__cia">Cia<svg class="logo__paw" aria-hidden="true"><use href="#icon-paw"/></svg></span>
+        <span class="logo__tag">pet shop · bh</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#servicos"><span>01</span>Serviços</a></li>
+          <li><a class="site-nav__link" href="#spa"><span>02</span>Dia de spa</a></li>
+          <li><a class="site-nav__link" href="#galeria"><span>03</span>Galeria</a></li>
+          <li><a class="site-nav__link" href="#sobre"><span>04</span>Sobre</a></li>
+          <li><a class="site-nav__link" href="#contato"><span>05</span>Contato</a></li>
+        </ul>
+        <a class="site-nav__cta origin-btn origin-btn-primary origin-btn--sm" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">Agendar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ═══════════ Hero — split: texto à esquerda, imagem em arco à direita ═══════════ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow fadeInUp" data-anime="0">Pet shop em Belo Horizonte</p>
+          <h1 class="hero__title fadeInUp" id="hero-title" data-anime="0">
+            Cuidado que <em>se sente</em> no&nbsp;pelo.
+          </h1>
+          <p class="hero__lead fadeInUp" data-anime="200">
+            Banho e tosa, rações, acessórios e consultas veterinárias — com o carinho de quem chama cada cão e gato pelo nome.
+          </p>
+          <div class="hero__actions fadeInUp" data-anime="400">
+            <a class="origin-btn origin-btn-primary" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">
+              <svg class="btn-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+              Agendar pelo WhatsApp
+            </a>
+            <a class="flow-btn" href="#servicos">Ver serviços</a>
+          </div>
+          <ul class="hero__facts fadeInSlightUp" data-anime="550">
+            <li><strong>Cães &amp; gatos</strong> de todas as raças</li>
+            <li><strong>Veterinário</strong> na casa</li>
+          </ul>
+        </div>
+
+        <figure class="hero__media fadeInScale" data-anime="200">
+          <img
+            class="hero__img"
+            src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=1600&q=85"
+            alt="Filhote de corgi caramelo e branco sentado, olhando para a câmera com as orelhas em pé"
+            width="1600" height="2000" fetchpriority="high">
+          <figcaption class="hero__caption">
+            <span class="hero__caption-name">Biscoito, 4 meses</span>
+            <span>primeiro banho na Patinhas</span>
+          </figcaption>
+        </figure>
+
+        <!-- Selo giratório sobrepondo texto e imagem -->
+        <div class="hero__stamp fadeInScale" data-anime="600" aria-hidden="true">
+          <div class="stamp">
+            <svg class="stamp__ring" viewBox="0 0 128 128">
+              <defs>
+                <path id="stamp-circle" d="M64,64 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/>
+              </defs>
+              <text><textPath href="#stamp-circle">banho • tosa • vet • carinho •</textPath></text>
+            </svg>
+            <svg class="stamp__icon"><use href="#icon-paw"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Faixa inclinada com serviços em loop -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Banho &amp; Tosa</span><span>✺</span><span>Consultas veterinárias</span><span>✺</span><span>Rações premium</span><span>✺</span><span>Acessórios</span><span>✺</span>
+          <span>Banho &amp; Tosa</span><span>✺</span><span>Consultas veterinárias</span><span>✺</span><span>Rações premium</span><span>✺</span><span>Acessórios</span><span>✺</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ Serviços — accordion expansível ═══════════ -->
+    <section class="services" id="servicos" aria-labelledby="services-title">
+      <div class="container services__grid">
+        <header class="services__head">
+          <p class="eyebrow fadeInUp" data-anime="0">Serviços</p>
+          <h2 class="services__title fadeInUp" id="services-title" data-anime="0">
+            Tudo que o seu pet precisa, <em>num só endereço.</em>
+          </h2>
+          <p class="services__intro fadeInUp" data-anime="150">
+            Do banho de rotina à consulta de check-up. Cada atendimento começa por uma ficha com as manias, alergias e preferências do seu bicho.
+          </p>
+          <span class="services__count fadeInLeft" data-anime="300" aria-hidden="true">04</span>
+        </header>
+
+        <div class="accordion" data-accordion>
+          <!-- Item 01 -->
+          <article class="acc-item is-open fadeInUp" data-anime="100">
+            <h3 class="acc-heading">
+              <button class="acc-trigger" type="button" id="acc-btn-1" aria-expanded="true" aria-controls="acc-panel-1">
+                <span class="acc-num">01</span>
+                <span class="acc-title">Banho &amp; Tosa</span>
+                <span class="acc-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-1" role="region" aria-labelledby="acc-btn-1">
+              <div class="acc-panel__inner">
+                <img
+                  class="acc-img"
+                  src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=400&q=70"
+                  alt="Golden retriever molhado e tranquilo durante o banho, com a mão da tosadora no pelo"
+                  width="400" height="500" loading="lazy">
+                <div class="acc-body">
+                  <p>Água morna, shampoo hipoalergênico escolhido pela ficha do pet e secador silencioso. Tosa higiênica, na máquina ou na tesoura — do jeitinho que você pediu.</p>
+                  <ul class="acc-tags">
+                    <li>Tosa na tesoura</li>
+                    <li>Hidratação</li>
+                    <li>Corte de unhas</li>
+                    <li>Limpeza de ouvidos</li>
+                  </ul>
+                  <a class="flow-btn" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">Agendar banho</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 02 -->
+          <article class="acc-item fadeInUp" data-anime="250">
+            <h3 class="acc-heading">
+              <button class="acc-trigger" type="button" id="acc-btn-2" aria-expanded="false" aria-controls="acc-panel-2">
+                <span class="acc-num">02</span>
+                <span class="acc-title">Consultas veterinárias</span>
+                <span class="acc-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-2" role="region" aria-labelledby="acc-btn-2">
+              <div class="acc-panel__inner">
+                <img
+                  class="acc-img"
+                  src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=400&q=70"
+                  alt="Veterinária de jaleco segurando com carinho um gato rajado durante a consulta"
+                  width="400" height="500" loading="lazy">
+                <div class="acc-body">
+                  <p>Consultório na própria loja, com atendimento sem correria. Check-ups, vacinas e acompanhamento para filhotes, adultos e idosos.</p>
+                  <ul class="acc-tags">
+                    <li>Check-up</li>
+                    <li>Vacinação</li>
+                    <li>Vermifugação</li>
+                    <li>Coleta de exames</li>
+                  </ul>
+                  <a class="flow-btn" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">Marcar consulta</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 03 -->
+          <article class="acc-item fadeInUp" data-anime="400">
+            <h3 class="acc-heading">
+              <button class="acc-trigger" type="button" id="acc-btn-3" aria-expanded="false" aria-controls="acc-panel-3">
+                <span class="acc-num">03</span>
+                <span class="acc-title">Rações &amp; nutrição</span>
+                <span class="acc-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-3" role="region" aria-labelledby="acc-btn-3">
+              <div class="acc-panel__inner">
+                <img
+                  class="acc-img"
+                  src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&q=70"
+                  alt="Tigela cheia de ração seca sobre piso de madeira, com as patas de um cachorro ao lado"
+                  width="400" height="500" loading="lazy">
+                <div class="acc-body">
+                  <p>Rações premium e super premium, linhas terapêuticas e petiscos naturais. A gente ajuda a escolher pelo porte, idade e rotina do seu pet.</p>
+                  <ul class="acc-tags">
+                    <li>Super premium</li>
+                    <li>Linhas terapêuticas</li>
+                    <li>Petiscos naturais</li>
+                  </ul>
+                  <a class="flow-btn" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">Pedir indicação</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 04 -->
+          <article class="acc-item fadeInUp" data-anime="550">
+            <h3 class="acc-heading">
+              <button class="acc-trigger" type="button" id="acc-btn-4" aria-expanded="false" aria-controls="acc-panel-4">
+                <span class="acc-num">04</span>
+                <span class="acc-title">Acessórios</span>
+                <span class="acc-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-4" role="region" aria-labelledby="acc-btn-4">
+              <div class="acc-panel__inner">
+                <img
+                  class="acc-img"
+                  src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&q=70"
+                  alt="Pug preto vestindo um suéter de tricô cinza sobre fundo amarelo"
+                  width="400" height="500" loading="lazy">
+                <div class="acc-body">
+                  <p>Coleiras, caminhas, roupinhas, brinquedos e arranhadores — curadoria pequena, escolhida a dedo, pensando em conforto e durabilidade.</p>
+                  <ul class="acc-tags">
+                    <li>Camas &amp; mantas</li>
+                    <li>Roupinhas</li>
+                    <li>Brinquedos</li>
+                    <li>Arranhadores</li>
+                  </ul>
+                  <a class="flow-btn" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">Consultar estoque</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ Dia de spa — linha do tempo horizontal (seção inesperada) ═══════════ -->
+    <section class="spa" id="spa" aria-labelledby="spa-title">
+      <div class="container spa__head">
+        <p class="eyebrow eyebrow--light fadeInUp" data-anime="0">Transparência total</p>
+        <h2 class="spa__title fadeInUp" id="spa-title" data-anime="0">
+          Um banho, <em>minuto a minuto.</em>
+        </h2>
+        <p class="spa__intro fadeInUp" data-anime="150">
+          Nada de deixar o pet e ficar no escuro. Você recebe atualizações pelo WhatsApp em cada etapa — e a foto do resultado antes de vir buscar.
+        </p>
+      </div>
+
+      <ol class="spa__timeline" tabindex="0" aria-label="Etapas do banho (role para o lado)">
+        <li class="spa__step fadeInUp" data-anime="100">
+          <time class="spa__time">08:30</time>
+          <h3 class="spa__step-title">Chegada sem pressa</h3>
+          <p>Cheirinho no ambiente, petisco de boas-vindas e checagem de pele, pelo e orelhas.</p>
+        </li>
+        <li class="spa__step fadeInUp" data-anime="250">
+          <time class="spa__time">09:00</time>
+          <h3 class="spa__step-title">Banho morno</h3>
+          <p>Shampoo definido na ficha do pet. Pele sensível? Linha hipoalergênica.</p>
+        </li>
+        <li class="spa__step spa__step--photo fadeInUp" data-anime="400">
+          <img
+            src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&q=70"
+            alt="Gatinho cinza e creme levantando a patinha em fundo azul claro"
+            width="400" height="400" loading="lazy">
+          <p class="spa__photo-note">Gatos têm horário só deles, sem latidos por perto.</p>
+        </li>
+        <li class="spa__step fadeInUp" data-anime="550">
+          <time class="spa__time">09:40</time>
+          <h3 class="spa__step-title">Secagem silenciosa</h3>
+          <p>Secador de baixo ruído e toalha quentinha. Sem susto, sem estresse.</p>
+        </li>
+        <li class="spa__step fadeInUp" data-anime="700">
+          <time class="spa__time">10:15</time>
+          <h3 class="spa__step-title">Tosa &amp; acabamento</h3>
+          <p>Corte combinado com você, unhas aparadas e perfume suave (opcional).</p>
+        </li>
+        <li class="spa__step spa__step--final fadeInUp" data-anime="850">
+          <time class="spa__time">10:50</time>
+          <h3 class="spa__step-title">Foto no seu WhatsApp</h3>
+          <p>Você vê o resultado e combina a busca — ou a gente leva até você.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ═══════════ Galeria — destaque (1 grande + menores) ═══════════ -->
+    <section class="gallery" id="galeria" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="gallery__head">
+          <h2 class="gallery__title fadeInUp" id="gallery-title" data-anime="0">
+            Clientes <em>de quatro patas</em>
+          </h2>
+          <div class="gallery__aside fadeInUp" data-anime="150">
+            <p>Saíram cheirosos, voltaram felizes. Mais fotos no nosso Instagram.</p>
+            <a class="flow-btn" href="https://www.instagram.com/patinhasecia.bh/" target="_blank" rel="noopener noreferrer">@patinhasecia.bh</a>
+          </div>
+        </div>
+
+        <div class="gallery__grid">
+          <figure class="gallery__item gallery__item--feature fadeInScale" data-anime="200">
+            <img
+              src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=75"
+              alt="Dois cachorros correndo lado a lado na grama em um dia ensolarado"
+              width="800" height="1000" loading="lazy">
+            <figcaption class="gallery__caption">
+              <span class="gallery__caption-big">Thor &amp; Mel</span>
+              <span>irmãos, tosa de verão</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery__item fadeInScale" data-anime="350">
+            <img
+              src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=75"
+              alt="Gato rajado de olhos verdes encarando a câmera de perto"
+              width="800" height="800" loading="lazy">
+            <figcaption class="gallery__caption"><span>Nina · hidratação</span></figcaption>
+          </figure>
+
+          <figure class="gallery__item gallery__item--tall fadeInScale" data-anime="500">
+            <img
+              src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&q=75"
+              alt="Cachorro de pelo claro com expressão alegre posando para retrato"
+              width="800" height="1100" loading="lazy">
+            <figcaption class="gallery__caption"><span>Paçoca · banho completo</span></figcaption>
+          </figure>
+
+          <figure class="gallery__item fadeInScale" data-anime="650">
+            <img
+              src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&q=75"
+              alt="Cachorro sentado em um gramado olhando atento para o lado"
+              width="800" height="800" loading="lazy">
+            <figcaption class="gallery__caption"><span>Fred · check-up anual</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ Sobre — números em destaque ═══════════ -->
+    <section class="about" id="sobre" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div class="about__story">
+          <p class="eyebrow fadeInUp" data-anime="0">Sobre a Patinhas</p>
+          <h2 class="about__title fadeInUp" id="about-title" data-anime="0">
+            Pet shop de bairro, <em>cuidado de família.</em>
+          </h2>
+          <p class="fadeInUp" data-anime="150">
+            A Patinhas &amp; Cia nasceu em Belo Horizonte de um jeito simples: tratar o bicho dos outros como a gente trata o nosso. Hoje somos banho e tosa, loja e consultório — mas o atendimento continua um a um.
+          </p>
+          <figure class="about__media fadeInScale" data-anime="200">
+            <img
+              src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=75"
+              alt="Tutora abraçando seu cachorro ao ar livre, ao pôr do sol"
+              width="800" height="600" loading="lazy">
+          </figure>
+        </div>
+
+        <dl class="about__stats">
+          <div class="stat fadeInUp" data-anime="150">
+            <dt class="stat__label">anos cuidando de pets em BH</dt>
+            <dd class="stat__value"><span data-count="12">12</span></dd>
+          </div>
+          <div class="stat stat--offset fadeInUp" data-anime="300">
+            <dt class="stat__label">fichas de pets cadastradas</dt>
+            <dd class="stat__value"><span data-count="2400">2.400</span><sup>+</sup></dd>
+          </div>
+          <div class="stat fadeInUp" data-anime="450">
+            <dt class="stat__label">dos tutores voltam todo mês</dt>
+            <dd class="stat__value"><span data-count="94">94</span><sup>%</sup></dd>
+          </div>
+          <div class="stat stat--offset stat--accent fadeInUp" data-anime="600">
+            <dt class="stat__label">raças que não atendemos</dt>
+            <dd class="stat__value"><span>0</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ═══════════ Contato — fundo colorido + CTA ═══════════ -->
+    <section class="contact" id="contato" aria-labelledby="contact-title">
+      <div class="container contact__inner">
+        <figure class="contact__media fadeInScale" data-anime="200">
+          <img
+            src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=800&q=75"
+            alt="Filhote de golden retriever correndo pela grama sob a luz dourada do fim de tarde"
+            width="800" height="800" loading="lazy">
+        </figure>
+
+        <div class="contact__content">
+          <p class="eyebrow fadeInUp" data-anime="0">Contato</p>
+          <h2 class="contact__title fadeInUp" id="contact-title" data-anime="0">
+            Bora marcar o <em>próximo banho?</em>
+          </h2>
+          <p class="contact__lead fadeInUp" data-anime="150">
+            Chama no WhatsApp: a gente confere a agenda, tira dúvidas e já monta a ficha do seu pet.
+          </p>
+          <div class="contact__actions fadeInUp" data-anime="300">
+            <a class="origin-btn origin-btn-primary" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">
+              <svg class="btn-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+              Chamar no WhatsApp
+            </a>
+          </div>
+
+          <dl class="contact__info">
+            <div class="fadeInUp" data-anime="450">
+              <dt>Onde</dt>
+              <dd>Belo Horizonte · MG</dd>
+            </div>
+            <div class="fadeInUp" data-anime="600">
+              <dt>Quando</dt>
+              <dd>Seg a sex, 8h–19h<br>Sábado, 8h–14h</dd>
+            </div>
+            <div class="fadeInUp" data-anime="750">
+              <dt>Instagram</dt>
+              <dd><a class="contact__link" href="https://www.instagram.com/patinhasecia.bh/" target="_blank" rel="noopener noreferrer">@patinhasecia.bh</a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ Rodapé — wordmark gigante + linha única ═══════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="site-footer__wordmark" aria-hidden="true">Patinhas <em>&amp;</em> Cia</p>
+      <div class="site-footer__bar">
+        <a class="logo logo--light" href="#inicio" aria-label="Voltar ao início">
+          <span>Patinhas</span>
+          <span class="logo__amp">&amp;</span>
+          <span class="logo__cia">Cia<svg class="logo__paw" aria-hidden="true"><use href="#icon-paw"/></svg></span>
+        </a>
+        <ul class="site-footer__links">
+          <li><a href="https://www.instagram.com/patinhasecia.bh/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li><a href="#topo">Voltar ao topo ↑</a></li>
+        </ul>
+        <p class="site-footer__copy">© <span data-year>2026</span> Patinhas &amp; Cia Pet Shop · Belo Horizonte, MG</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <div class="whatsapp-float">
+    <a class="origin-btn origin-btn-whatsapp whatsapp-float__btn" href="https://wa.me/5531999990001" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+      <svg class="btn-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="components/simple-anime.js"></script>
+  <script src="components/origin-button.js"></script>
+  <script src="js/main.js"></script>
+  <script>new SimpleAnime();</script>
+</body>
+</html>
